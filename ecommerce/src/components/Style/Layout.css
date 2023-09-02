@@ -1,0 +1,19 @@
+.layout{
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.layout main{
+    min-height: 90vh;
+}
+.layout .header{
+    position: relative;
+    top: 0;
+    border: 1px solid green;
+    text-align: center;
+}
+
+.layout .footer{
+    text-align: center;
+    border: 1px solid yellow;
+}
