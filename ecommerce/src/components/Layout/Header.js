@@ -1,8 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { HiShoppingCart,HiSearch } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const {data} = useSelector((state)=>state.cart);
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,6 +31,9 @@ const Header = () => {
               </li>
             </ul>
             <div className="nav-item">
+            {
+              data.length>0 && <span className="cart-length">{data.length}</span>
+            }
               <NavLink to={'/cart'} className="nav-link">
                 <HiShoppingCart />
               </NavLink>

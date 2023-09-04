@@ -4,28 +4,31 @@ import useFetch from "../Data/Data";
 import "./style/Shop.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { addToCart } from "../Store/CartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 const Shop = () => {
-  const data = useFetch("https://fakestoreapi.com/products");
+  const data = useFetch("https://api.escuelajs.co/api/v1/products");
+  const navigate = useNavigate();
+  
   const dispatch = useDispatch();
-  const slector  = useSelector((state)=>state.cart);
-  console.log(slector.data)
-
   const AddtocartHandle= (product)=>{
     dispatch(addToCart(product));
   }
+  
+
   return (
     <Layout>
       <div className="shop">
         {data.map((item) => {
           return (
             <div key={item.id} className="card">
-              <img src={item.image} alt={item.id} />
+              <img src={item.images[0]} alt={item.id} onClick={()=>{navigate(`/productCom/${item.id}`)}}/>
               <p id="title">{item.title}</p>
               <span id="price">{item.price}$</span>
               <span id="wish">
-                <AiOutlineHeart />
+                <AiOutlineHeart/>
               </span>
               <button className="btn btn-outline-dark" onClick={() =>{AddtocartHandle(item)}}>
                 Add to Cart
@@ -37,5 +40,6 @@ const Shop = () => {
     </Layout>
   );
 };
+
 
 export default Shop;

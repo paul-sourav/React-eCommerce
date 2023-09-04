@@ -5,6 +5,7 @@ import Cart from './pages/Cart';
 import Shop from './pages/Shop';
 import { Provider } from 'react-redux';
 import Store from "./Store/Store"
+import ProductDetails from './components/ProductDetails';
 const App = () => {
   return (
     <div className='App'>
@@ -14,6 +15,7 @@ const App = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/shop' element={<Shop/>}/>
+            <Route path='/productCom/:product' element={<ProductDetails/>}/>
           </Routes>
         </Router>
         </Provider>

@@ -3,19 +3,30 @@ import Layout from "../components/Layout/Layout";
 import "./style/Shop.css";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCart } from "../Store/CartSlice";
+import { useNavigate } from "react-router-dom";
+
+
 const Cart = () => {
-  const { data } = useSelector((state) => state.cart);
+  const { data} = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const RemoveCartHandle = (id) => {
     dispatch(removeCart(id));
   };
+  const navigate = useNavigate();
+  console.log(data)
   return (
     <Layout>
       <div className="shop">
         {data.map((item) => {
           return (
             <div key={item.id} className="card">
-              <img src={item.image} alt={item.id} />
+              <img
+                src={item.images[0]}
+                alt={item.id}
+                onClick={() => {
+                  navigate(`/productCom/${item.id}`);
+                }}
+              />
               <p id="title">{item.title}</p>
               <span id="price">{item.price}$</span>
               <div className="btn-group">

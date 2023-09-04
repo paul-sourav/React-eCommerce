@@ -4,6 +4,8 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import Banner1 from "../Assets/Asset 1.png";
 import Banner2 from "../Assets/Asset 2.png";
+import CategoryList from '../components/CategoryList';
+
 
 const Home = () => {
   const responsive = {
@@ -25,6 +27,7 @@ const Home = () => {
       items: 1
     }
   };
+  
   return (
     <Layout>
         <div className='home'>
@@ -32,6 +35,7 @@ const Home = () => {
               <img src={Banner1} alt='banner1' width={"100%"}/>
               <img src={Banner2} alt='banner2' width={"100%"}/>
             </Carousel>
+            <CategoryList/>
         </div>
     </Layout>
   )
