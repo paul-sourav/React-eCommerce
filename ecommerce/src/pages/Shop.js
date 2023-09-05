@@ -3,23 +3,15 @@ import Layout from "../components/Layout/Layout";
 import useFetch from "../Data/Data";
 import "./style/Shop.css";
 import { AiOutlineHeart } from "react-icons/ai";
-import { addToCart } from "../Store/CartSlice";
-import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import CategoryList from "../components/CategoryList";
 
 const Shop = () => {
   const data = useFetch("https://api.escuelajs.co/api/v1/products");
   const navigate = useNavigate();
-  
-  const dispatch = useDispatch();
-  const AddtocartHandle= (product)=>{
-    dispatch(addToCart(product));
-  }
-  
-
   return (
     <Layout>
+    <CategoryList/>
       <div className="shop">
         {data.map((item) => {
           return (
@@ -30,9 +22,6 @@ const Shop = () => {
               <span id="wish">
                 <AiOutlineHeart/>
               </span>
-              <button className="btn btn-outline-dark" onClick={() =>{AddtocartHandle(item)}}>
-                Add to Cart
-              </button>
             </div>
           );
         })}

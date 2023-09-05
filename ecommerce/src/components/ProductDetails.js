@@ -3,6 +3,8 @@ import Layout from "./Layout/Layout";
 import { useParams } from "react-router-dom";
 import useFetch from "../Data/Data";
 import "./Style/productdetails.css";
+import { addToCart } from "../Store/CartSlice";
+import { useDispatch} from "react-redux";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -10,7 +12,11 @@ const ProductDetails = () => {
     `https://api.escuelajs.co/api/v1/products/${params.product}`
   );
 
-  console.log(product)
+  const dispatch = useDispatch();
+  const AddtocartHandle= (product)=>{
+    dispatch(addToCart(product));
+  }
+  
 
   return (
     <Layout>
@@ -24,8 +30,10 @@ const ProductDetails = () => {
           <p>{product.description}</p>
           <h2> {product.price}$ </h2>
           <div className="btn-group">
-                <button className="btn btn-outline-dark">Add to cart</button>
-                <button className="btn btn-outline-dark">Buy Now</button>
+            <button className="btn btn-outline-dark" onClick={() => { AddtocartHandle(product) }}>
+              Add to Cart
+            </button>
+            <button className="btn btn-outline-dark">Buy Now</button>
           </div>
         </div>
       </div>
