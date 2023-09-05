@@ -4,7 +4,8 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import Banner1 from "../Assets/Asset 1.png";
 import Banner2 from "../Assets/Asset 2.png";
-import CategoryList from '../components/CategoryList';
+import useFetch from "../Data/Data";
+import "./style/Home.css";
 
 
 const Home = () => {
@@ -28,6 +29,9 @@ const Home = () => {
     }
   };
   
+  const category = useFetch("https://api.escuelajs.co/api/v1/categories");
+  console.log(category);
+
   return (
     <Layout>
         <div className='home'>
@@ -35,7 +39,18 @@ const Home = () => {
               <img src={Banner1} alt='banner1' width={"100%"}/>
               <img src={Banner2} alt='banner2' width={"100%"}/>
             </Carousel>
-            <CategoryList/>
+            <div className='cate-container'>
+            {
+              category.slice(0,5).map((item,index)=>{
+                return(
+                  <div className='category' key={item.name}>
+                    <img src={item.image} />
+                    <p>{item.name}</p>
+                  </div>
+                )
+              })
+            }
+            </div>
         </div>
     </Layout>
   )

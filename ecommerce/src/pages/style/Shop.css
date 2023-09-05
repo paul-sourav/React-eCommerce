@@ -43,6 +43,22 @@
 .card:hover{
   box-shadow:0 0.2rem 0.5rem rgb(182, 182, 182);
 }
+.search-bar{
+    width: 70%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin:0.2rem 0 ;
+    border-radius:0.5rem;
+    font-size: large;
+    text-align: center;
+    border: 1px solid black;
+}
+.search-bar:focus{
+    background-color:#f4f4f4;
+    border: none;
+    outline: 0;
+}
 
 @media only screen and (max-width:498px){
     .card{

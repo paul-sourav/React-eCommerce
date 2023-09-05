@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { HiShoppingCart, HiSearch } from "react-icons/hi";
+import { HiShoppingCart } from "react-icons/hi";
 import { useSelector } from "react-redux";
 
 const Header = () => {
   const { data } = useSelector((state) => state.cart);
-  const [search,setSearch] = useState(false);
   return (
     <div className="header">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -43,19 +42,9 @@ const Header = () => {
                 <HiShoppingCart />
               </NavLink>
             </div>
-            <div className="nav-item">
-              <span className="nav-link ms-2" onClick={()=>{setSearch(!search)}}>
-                <HiSearch />
-              </span>
-            </div>
           </div>
         </div>
       </nav>
-
-      <div className="input-group " style={{display:search?"block":"none"}}>
-        <input type="search" className="border text-center" placeholder="search product"/>
-        <button className="btn btn-success">search</button>
-      </div>
     </div>
   );
 };
