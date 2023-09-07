@@ -3,34 +3,42 @@ import Layout from "../components/Layout/Layout";
 import useFetch from "../Data/Data";
 import "./style/Shop.css";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import CategoryList from "../components/CategoryList";
+import { useDispatch } from "react-redux";
+import { addWishlist } from "../Store/WishSlice";
 
 const Shop = () => {
   const data = useFetch("https://api.escuelajs.co/api/v1/products");
+  const location = useLocation();
   const navigate = useNavigate();
   const [searchproduct, setSearchProduct] = useState("");
-  const [category, setCategory] = useState("");
-  
+  const [category, setCategory] = useState(location.state.setcate);
+  const dispatch = useDispatch();
+
   function getCategoryName(name) {
     setCategory(name);
   }
 
+  function setWishlist(product) {
+    dispatch(addWishlist(product));
+  }
+
   return (
     <Layout>
-    {/* search bar */}
+      {/* search bar */}
       <input
         type="search"
         className="search-bar"
         placeholder="search product"
         onChange={(e) => setSearchProduct(e.target.value)}
       />
-      
-    {/* category section */}
 
-      <CategoryList category={getCategoryName}/>
+      {/* category section */}
 
-    {/* product section */}
+      <CategoryList category={getCategoryName} />
+
+      {/* product section */}
       <div className="shop">
         {/* filter for search and category */}
         {data
@@ -46,7 +54,7 @@ const Shop = () => {
 
           .filter((item) => {
             if (!category) return item;
-            if (category === "all" )return item;
+            if (category === "all") return item;
             return item.category.name === category;
           })
 
@@ -63,7 +71,7 @@ const Shop = () => {
                 <p id="title">{item.title}</p>
                 <p>{item.category.name}</p>
                 <span id="price">{item.price}$</span>
-                <span id="wish">
+                <span id="wish" onClick={() => setWishlist(item)}>
                   <AiOutlineHeart />
                 </span>
               </div>

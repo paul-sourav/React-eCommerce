@@ -6,6 +6,7 @@ import Banner1 from "../Assets/Asset 1.png";
 import Banner2 from "../Assets/Asset 2.png";
 import useFetch from "../Data/Data";
 import "./style/Home.css";
+import {useNavigate} from "react-router-dom"
 
 
 const Home = () => {
@@ -32,6 +33,11 @@ const Home = () => {
   const category = useFetch("https://api.escuelajs.co/api/v1/categories");
   console.log(category);
 
+  const  navigate  = useNavigate();
+  const HandleCategory  = (name)=>{
+     navigate("/shop",{state:{setcate:name}})
+  }
+
   return (
     <Layout>
         <div className='home'>
@@ -43,7 +49,7 @@ const Home = () => {
             {
               category.slice(0,5).map((item,index)=>{
                 return(
-                  <div className='category' key={item.name}>
+                  <div className='category' key={item.name}  onClick={()=>HandleCategory(item.name)}>
                     <img src={item.image} />
                     <p>{item.name}</p>
                   </div>
