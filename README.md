@@ -29,12 +29,4 @@ You can view a live demo of this project [https://relaxed-sprinkles-a4d9f3.netli
 - HTML/CSS
 - JavaScript/ES6
 
-## Installation
 
-To run this project locally, follow these steps:
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/paul-sourav/react-ecommerce-website.git
-   cd react-ecommerce-website
