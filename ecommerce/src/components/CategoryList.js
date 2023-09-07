@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useFetch from "../Data/Data";
 
 const CategoryList = ({ category }) => {
-  const categories = useFetch("https://api.escuelajs.co/api/v1/categories");
+  const categories = useFetch("https://fakestoreapi.com/products/categories");
   const [activeCategory, setActiveCategory] = useState(null);
 
   //passing category name from child to parent com to shop page
@@ -19,15 +19,15 @@ const CategoryList = ({ category }) => {
           <button
             key={index}
             type="checkbox"
-            value={item.name}
+            value={item}
             onClick={() => {
-              getCate(item.name);
+              getCate(item);
             }}
             className={`btn btn-outline-success shadow-sm ms-1 ${
               activeCategory === item.name ? "active" : ""
             }`}
           >
-            <h6>{item.name}</h6>
+            <h6>{item}</h6>
           </button>
         );
       })}

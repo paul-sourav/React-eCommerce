@@ -1,23 +1,24 @@
-import React from "react";
-import Layout from "../components/Layout/Layout";
+import React from 'react'
+import Layout from '../components/Layout/Layout'
+import { useDispatch, useSelector } from 'react-redux';
 import "./style/Shop.css";
-import { useDispatch, useSelector } from "react-redux";
-import { removeCart } from "../Store/CartSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { removeWishlist } from '../Store/WishSlice';
 
+const Wishlist = () => {
 
-const Cart = () => {
-  const { data} = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-  const RemoveCartHandle = (id) => {
-    dispatch(removeCart(id));
-  };
+  const wishlist = useSelector((state)=>state.wish);
+  const dispatch = useDispatch("")
   const navigate = useNavigate();
-  console.log(data)
+
+  const RemoveWishlist = (id) =>{
+    dispatch(removeWishlist(id))
+  } 
+
   return (
     <Layout>
       <div className="shop">
-        {data.map((item) => {
+        {wishlist.data.map((item) => {
           return (
             <div key={item.id} className="card">
               <img
@@ -32,9 +33,9 @@ const Cart = () => {
               <div className="btn-group">
                 <button
                   className="btn btn-outline-danger"
-                  onClick={() => RemoveCartHandle(item.id)}
+                  onClick={() => RemoveWishlist(item.id)}
                 >
-                  Remove cart
+                  Remove wishlist
                 </button>
                 <button className="btn btn-outline-success">Buy now</button>
               </div>
@@ -43,7 +44,7 @@ const Cart = () => {
         })}
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Wishlist;

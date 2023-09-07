@@ -10,7 +10,6 @@
 .category{
     width:15rem;
     margin:1.2rem 0;
-    height: 50vh;
     padding: 0.5rem;
     color:rgb(33, 32, 32);
     cursor: pointer;
@@ -19,13 +18,13 @@
     border-radius: 1.2rem;
     /* background-color:rgb(195, 205, 102); */
 }
+.category p{
+    text-transform: capitalize;
+}
 .category:hover{
-    box-shadow:0.5rem 0 0.7rem gray;
+    box-shadow:0.2rem 0 0.3rem rgba(128, 128, 128, 0.452);
 }
-.category img{
-    border-radius: 50%;
-    width: 100%;
-}
+
 @media only screen and (max-width:881px){
     .category{
         width:10rem;

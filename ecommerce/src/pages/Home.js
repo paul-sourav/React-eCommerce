@@ -7,7 +7,7 @@ import Banner2 from "../Assets/Asset 2.png";
 import useFetch from "../Data/Data";
 import "./style/Home.css";
 import {useNavigate} from "react-router-dom"
-
+import imageData  from "./Imagedata";
 
 const Home = () => {
   const responsive = {
@@ -30,9 +30,7 @@ const Home = () => {
     }
   };
   
-  const category = useFetch("https://api.escuelajs.co/api/v1/categories");
-  console.log(category);
-
+  const category = useFetch("https://fakestoreapi.com/products/categories");
   const  navigate  = useNavigate();
   const HandleCategory  = (name)=>{
      navigate("/shop",{state:{setcate:name}})
@@ -49,9 +47,9 @@ const Home = () => {
             {
               category.slice(0,5).map((item,index)=>{
                 return(
-                  <div className='category' key={item.name}  onClick={()=>HandleCategory(item.name)}>
-                    <img src={item.image} />
-                    <p>{item.name}</p>
+                  <div className='category' key={item}  onClick={()=>HandleCategory(item)}>
+                   <img src={imageData[index]} alt={item} width={"100px"}/>
+                    <p>{item}</p>
                   </div>
                 )
               })

@@ -6,6 +6,7 @@ import Shop from './pages/Shop';
 import { Provider } from 'react-redux';
 import Store from "./Store/Store"
 import ProductDetails from './components/ProductDetails';
+import Wishlist from './pages/Wishlist';
 const App = () => {
   return (
     <div className='App'>
@@ -14,7 +15,8 @@ const App = () => {
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/cart' element={<Cart/>}/>
-            <Route path='/shop/:search' element={<Shop/>}/>
+            <Route path='/wishlist' element={<Wishlist/>} />
+            <Route path='/shop' element={<Shop/>}/>
             <Route path='/productCom/:product' element={<ProductDetails/>}/>
           </Routes>
         </Router>

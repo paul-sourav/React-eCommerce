@@ -9,11 +9,11 @@ import { useDispatch } from "react-redux";
 import { addWishlist } from "../Store/WishSlice";
 
 const Shop = () => {
-  const data = useFetch("https://api.escuelajs.co/api/v1/products");
+  const data = useFetch("https://fakestoreapi.com/products");
   const location = useLocation();
   const navigate = useNavigate();
   const [searchproduct, setSearchProduct] = useState("");
-  const [category, setCategory] = useState(location.state.setcate);
+  const [category, setCategory] = useState(location.state?.setcate);
   const dispatch = useDispatch();
 
   function getCategoryName(name) {
@@ -55,21 +55,21 @@ const Shop = () => {
           .filter((item) => {
             if (!category) return item;
             if (category === "all") return item;
-            return item.category.name === category;
+            return item.category === category;
           })
 
           .map((item) => {
             return (
               <div key={item.id} className="card">
                 <img
-                  src={item.images[0]}
+                  src={item.image}
                   alt={item.id}
                   onClick={() => {
                     navigate(`/productCom/${item.id}`);
                   }}
                 />
                 <p id="title">{item.title}</p>
-                <p>{item.category.name}</p>
+                <p>{item.category}</p>
                 <span id="price">{item.price}$</span>
                 <span id="wish" onClick={() => setWishlist(item)}>
                   <AiOutlineHeart />

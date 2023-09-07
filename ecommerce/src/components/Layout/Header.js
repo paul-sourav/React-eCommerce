@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HiShoppingCart } from "react-icons/hi";
+import {BsFillSuitHeartFill} from "react-icons/bs";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -12,6 +13,7 @@ const Header = () => {
           <NavLink to={"/"} className="navbar-brand">
             DevMart
           </NavLink>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -23,23 +25,31 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
+
               <li className="nav-item">
-                <NavLink to={"/shop/all"} className="nav-link">
+                <NavLink to={"/shop"} className="nav-link ">
                   Shop
                 </NavLink>
               </li>
+
               <li className="nav-item">
                 <NavLink to={"/about"} className="nav-link">
                   AboutUs
                 </NavLink>
               </li>
             </ul>
+
             <div className="nav-item">
               {data.length > 0 && (
                 <span className="cart-length">{data.length}</span>
               )}
               <NavLink to={"/cart"} className="nav-link">
                 <HiShoppingCart />
+              </NavLink>
+            </div>
+            <div className="nav-item ms-3">
+              <NavLink to={"/wishlist"} className="nav-link">
+                <BsFillSuitHeartFill />
               </NavLink>
             </div>
           </div>

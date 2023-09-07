@@ -9,24 +9,24 @@ import { useDispatch} from "react-redux";
 const ProductDetails = () => {
   const params = useParams();
   const product = useFetch(
-    `https://api.escuelajs.co/api/v1/products/${params.product}`
+    `https://fakestoreapi.com/products/${params.product}`
   );
 
   const dispatch = useDispatch();
   const AddtocartHandle= (product)=>{
     dispatch(addToCart(product));
   }
-  
+
 
   return (
     <Layout>
       <div className="product-details">
         <div className="image">
-          <img src={product?.images} alt={product.title} />
+          <img src={product?.image} alt={product.title} />
         </div>
         <div className="details">
           <h1>{product.title}</h1>
-          <h4> {product.category?.name} </h4>
+          <h4> {product.category} </h4>
           <p>{product.description}</p>
           <h2> {product.price}$ </h2>
           <div className="btn-group">
