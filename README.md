@@ -1,4 +1,4 @@
-# React E-Commerce Website
+# React E-Commerce Website using Redux
 
 Welcome to my React e-commerce website! This project is a simple e-commerce platform built using React and Redux, allowing users to browse products, filter them by category, and search for specific items. Users can also add products to their wishlist and cart.
 
